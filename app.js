@@ -13,7 +13,7 @@ const expressValidator = require("express-validator");
 
 //connection to mongodb via monk
 const mongo = require("mongodb");
-const db = require("monk")("localhost/nodeblog");
+const db = require("monk")("localhost/simpleblog");
 
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
