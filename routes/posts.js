@@ -10,8 +10,8 @@ router.get('/add', (req, res, next) => {
 
 	categories.find({},{},(err, categories) => {
 		res.render('addpost',{
-  			'title': 'Add Post'
-  			//'categories': categories
+  			'title': 'Add Post',
+  			'categories': categories
   		});
 	});
 });
@@ -28,7 +28,7 @@ router.post('/add', upload.single('mainimage'),(req, res, next) => {
   if(req.file){
   	var mainimage = req.file.filename;   // this main image file does not
   } else {															// work with const or let
-  	var mainimage = 'noimage.jpg';			// because of unmmutability issues 
+  	var mainimage = 'noimage.jpg';			// because of unmmutability issues
   }
 
   	// Form Validation
