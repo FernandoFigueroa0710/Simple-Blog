@@ -5,8 +5,8 @@ const db = require("monk")("localhost/simpleblog");
 
 /* GET home page. */
 router.get("/", (req, res, next) => {
-  let db = req.db;
-  let posts = db.get("posts");
+  const db = req.db;
+  const posts = db.get("posts");
   posts.find({}, {}, (err, posts) => {
     res.render("index", { posts: posts });
   });
