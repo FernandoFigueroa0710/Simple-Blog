@@ -16,6 +16,7 @@ const db = require("monk")("localhost/simpleblog");
 
 const indexRouter = require("./routes/index");
 const postsRouter = require("./routes/posts");
+const categoriesRouter = require("./routes/categories");
 
 const app = express();
 // make moment global to the entire app.
@@ -74,6 +75,7 @@ app.use((req, res, next) => {
 
 app.use("/", indexRouter);
 app.use("/posts", postsRouter);
+app.use("/categories", categoriesRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
