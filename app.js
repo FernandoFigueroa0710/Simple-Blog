@@ -21,6 +21,12 @@ const categoriesRouter = require("./routes/categories");
 const app = express();
 // make moment global to the entire app.
 app.locals.moment = require('moment');
+
+//make this function available to truncate the text on the body posts
+app.locals.truncateText = (text, length) => {
+  const truncatedText = text.substring(0, length);
+  return truncatedText;
+}
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
