@@ -3,6 +3,17 @@ const router = express.Router();
 const mongo = require('mongodb');
 const db = require('monk')('localhost/simpleblog');
 
+router.get('/show/:category', (req, res, next) => {
+  const posts = db.get('posts');
+
+  posts.find({category: req.params.category},{},(err, posts) => {
+    res.render('index',{
+        'title': req.params.category,
+        'posts': posts
+      });
+  });
+});
+
 router.get('/add', (req, res, next) => {
   res.render('addcategory',{
     'title': 'Add Category',
