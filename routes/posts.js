@@ -5,6 +5,16 @@ const upload = multer({ dest: './public/images'})
 const mongo = require('mongodb');
 const db = require('monk')('localhost/simpleblog');
 
+router.get('/show/:id', (req, res, next) => {
+	const posts = db.get('posts');
+
+	posts.findById(req.params.id,(err, post) => {
+		res.render('show',{
+  			'post': post
+  		});
+	});
+});
+
 router.get('/add', (req, res, next) => {
 	const categories = db.get('categories');
 
